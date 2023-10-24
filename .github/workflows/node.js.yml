@@ -41,10 +41,10 @@ jobs:
         if: success()
         id: create-artifact
         run: |
-          cp version.txt out/textFiles/
-          cp iosArtifact.txt out/textFiles/site/
-          cp androidArtifact.txt out/textFiles/
-          cp index.html out/textFiles/
+          cp version.txt ./out/textFiles/
+          cp iosArtifact.txt ./out/textFiles/site/
+          cp androidArtifact.txt ./out/textFiles/
+          cp index.html ./out/textFiles/
 
       # - name: Upload version artifact
       #   if: success()
