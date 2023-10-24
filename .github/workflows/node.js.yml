@@ -37,6 +37,10 @@ jobs:
         if: success()
         run: echo "v0.0.2112" > version.txt
 
+      - name: Create version artifact directory
+        if: success()
+        run: mkdir -p ./out/textFiles/
+
       - name: Create version artifact
         if: success()
         id: create-artifact
