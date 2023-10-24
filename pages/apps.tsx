@@ -4,20 +4,42 @@ import Image from 'next/image';
 import appIcon from './app-icon.png';
 import styles from '../styles/apps.module.css';
 const MobileApps = () => {
-  const fetchVersion = (elementId: string, platform: string) => {
-    fetch(`./textFiles/version.txt?v=${Date.now()}`)
-      .then((response) => response.text())
+  const fetchVersion = (elementId, platform) => {
+    return fetch(`./textFiles/version.txt?v=${Date.now()}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.text();
+      })
       .then((version) => {
-        const versionElement = document.getElementById(elementId);
+        const versionElement = document.getElementById(`${platform}-version`);
         if (versionElement) versionElement.textContent = version;
+        return version;
       })
       .catch((error) => {
-        console.error('Error fetching version:', error);
+        console.error(`Error fetching ${platform} version:`, error);
+        throw error;
       });
   };
 
-  fetchVersion('ios-version', 'ios');
-  fetchVersion('android-version', 'android');
+  const MobileApps = () => {
+    fetchVersion('ios', 'ios')
+      .then((version) => {
+        console.log(`Fetched iOS version: ${version}`);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch iOS version:', error);
+      });
+
+    fetchVersion('android', 'android')
+      .then((version) => {
+        console.log(`Fetched Android version: ${version}`);
+      })
+      .catch((error) => {
+        console.error('Failed to fetch Android version:', error);
+      });
+  };
 
   return (
     <div className={styles.container}>
