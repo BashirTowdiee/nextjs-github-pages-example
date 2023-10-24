@@ -46,7 +46,7 @@ jobs:
         id: create-artifact
         run: |
           cp version.txt ./out/textFiles/
-          cp iosArtifact.txt ./out/textFiles/site/
+          cp iosArtifact.txt ./out/textFiles/
           cp androidArtifact.txt ./out/textFiles/
           cp index.html ./out/textFiles/
 
