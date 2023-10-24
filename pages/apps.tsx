@@ -5,7 +5,7 @@ import appIcon from './app-icon.png';
 import styles from '../styles/apps.module.css';
 const MobileApps = () => {
   const fetchVersion = (elementId: string, platform: string) => {
-    fetch(`./textFiles/version.txt?v=${Date.now()}`)
+    fetch(`./version.txt?v=${Date.now()}`)
       .then((response) => response.text())
       .then((version) => {
         const versionElement = document.getElementById(elementId);
