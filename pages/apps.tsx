@@ -1,9 +1,9 @@
-// components/MobileApps.tsx
+// pages/apps.tsx
 
 import Image from 'next/image';
 // import appIcon from '../src/assets/app-icon.png';
 import styles from '../styles/apps.module.css';
-const MobileApps = () => {
+const Apps = () => {
   const fetchVersion = (elementId: string, platform: string) => {
     fetch(`/version.txt?v=${Date.now()}`)
       .then((response) => response.text())
@@ -81,4 +81,4 @@ const MobileApps = () => {
   );
 };
 
-export default MobileApps;
+export default Apps;
