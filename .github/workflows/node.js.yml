@@ -44,27 +44,29 @@ jobs:
       - name: Create version artifact
         if: success()
         run: |
-          cp version.txt out/
-          cp iosArtifact.txt out/
-          cp androidArtifact.txt out/
+          mkdir -p site
+          cp version.txt site/
+          cp iosArtifact.txt site/
+          cp androidArtifact.txt site/
+          cp out site/
 
       - name: Upload version artifact
         if: success()
         uses: actions/upload-artifact@v2
         with:
           name: site-artifact
-          path: out
+          path: site
 
       - name: Download version artifact
         if: success() # This step depends on the success of the previous step
         uses: actions/download-artifact@v2
         with:
           name: site-artifact
-          path: out
+          path: site
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
-          FOLDER: out # The folder the action should deploy.
+          FOLDER: site # The folder the action should deploy.
