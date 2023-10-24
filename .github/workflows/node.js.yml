@@ -49,19 +49,19 @@ jobs:
           cp iosArtifact.txt ./out/textFiles/
           cp androidArtifact.txt ./out/textFiles/
 
-      # - name: Upload version artifact
-      #   if: success()
-      #   uses: actions/upload-artifact@v2
-      #   with:
-      #     name: site-artifact
-      #     path: site
+      - name: Upload version artifact
+        if: success()
+        uses: actions/upload-artifact@v2
+        with:
+          name: site-artifact
+          path: out
 
-      # - name: Download version artifact
-      #   if: success() # This step depends on the success of the previous step
-      #   uses: actions/download-artifact@v2
-      #   with:
-      #     name: site-artifact
-      #     path: site
+      - name: Download version artifact
+        if: success() # This step depends on the success of the previous step
+        uses: actions/download-artifact@v2
+        with:
+          name: site-artifact
+          path: out
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.1
