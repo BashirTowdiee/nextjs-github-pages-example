@@ -1,11 +1,11 @@
 // components/MobileApps.tsx
 
 import Image from 'next/image';
-import appIcon from './app-icon.png';
+// import appIcon from '../src/assets/app-icon.png';
 import styles from '../styles/apps.module.css';
 const MobileApps = () => {
   const fetchVersion = (elementId: string, platform: string) => {
-    fetch(`../version.txt?v=${Date.now()}`)
+    fetch(`/version.txt?v=${Date.now()}`)
       .then((response) => response.text())
       .then((version) => {
         const versionElement = document.getElementById(elementId);
@@ -22,14 +22,14 @@ const MobileApps = () => {
   return (
     <div className={styles.container}>
       <div className={styles.appIconContainer}>
-        <Image
+        {/* <Image
           className={styles.appIcon}
           height={150}
           width={150}
           layout="fixed"
           src={appIcon}
           alt="App Image"
-        />
+        /> */}
       </div>
       <div className={styles.appInfoContainer}>
         <div className={styles.appInfo}>
