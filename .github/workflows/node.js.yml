@@ -43,7 +43,6 @@ jobs:
 
       - name: Create version artifact
         if: success()
-        id: create-artifact
         run: |
           cp version.txt out/
           cp iosArtifact.txt out/
