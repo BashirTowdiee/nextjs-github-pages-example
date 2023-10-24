@@ -25,6 +25,41 @@ jobs:
       - name: Build my App
         run: npm run build && npm run export && touch ./out/.nojekyll
 
+      - name: Add Android Artifact.txt
+        if: success()
+        run: echo "Android Artifact" > androidArtifact.txt
+
+      - name: Add iOS Artifact.txt
+        if: success()
+        run: echo "iOS Artifact" > iosArtifact.txt
+
+      - name: Add version to version.txt
+        if: success()
+        run: echo "v0.0.2112" > version.txt
+
+      - name: Create version artifact
+        if: success()
+        id: create-artifact
+        run: |
+          cp version.txt out/textFiles/
+          cp iosArtifact.txt out/textFiles/site/
+          cp androidArtifact.txt out/textFiles/
+          cp index.html out/textFiles/
+
+      # - name: Upload version artifact
+      #   if: success()
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: site-artifact
+      #     path: site
+
+      # - name: Download version artifact
+      #   if: success() # This step depends on the success of the previous step
+      #   uses: actions/download-artifact@v2
+      #   with:
+      #     name: site-artifact
+      #     path: site
+
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.4.1
         with:
