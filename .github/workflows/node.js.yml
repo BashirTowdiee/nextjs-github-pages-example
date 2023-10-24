@@ -48,7 +48,6 @@ jobs:
           cp version.txt ./out/textFiles/
           cp iosArtifact.txt ./out/textFiles/
           cp androidArtifact.txt ./out/textFiles/
-          cp index.html ./out/textFiles/
 
       # - name: Upload version artifact
       #   if: success()
