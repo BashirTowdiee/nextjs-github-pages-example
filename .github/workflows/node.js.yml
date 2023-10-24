@@ -37,17 +37,17 @@ jobs:
         if: success()
         run: echo "v0.0.2112" > version.txt
 
-      - name: Create version artifact directory
-        if: success()
-        run: mkdir -p ./out/textFiles/
+      # - name: Create version artifact directory
+      #   if: success()
+      #   run: mkdir -p ./out/textFiles/
 
       - name: Create version artifact
         if: success()
         id: create-artifact
         run: |
-          cp version.txt ./out/textFiles/
-          cp iosArtifact.txt ./out/textFiles/
-          cp androidArtifact.txt ./out/textFiles/
+          cp version.txt ./out/
+          cp iosArtifact.txt ./out/
+          cp androidArtifact.txt ./out/
 
       - name: Upload version artifact
         if: success()
