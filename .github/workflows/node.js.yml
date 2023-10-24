@@ -33,14 +33,17 @@ jobs:
         if: success()
         run: echo "iOS Artifact" > iosArtifact.txt
 
-      - name: Add version to version.txt
+      # - name: Add version to version.txt
+      #   if: success()
+      #   run: echo "v0.0.2112" > version.txt
+
+      - name: Generate version.txt
         if: success()
-        run: echo "v0.0.2112" > version.txt
+        run: echo "v0.0.2112" > ./out/version.txt
 
       - name: Create version artifact
         if: success()
         run: |
-          cp version.txt out/
           cp iosArtifact.txt out/
           cp androidArtifact.txt out/
 
